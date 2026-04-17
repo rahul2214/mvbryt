@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mvbryt.com/sitemap.xml
