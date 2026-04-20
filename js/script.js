@@ -1,5 +1,5 @@
 /**
- * MVBRYT LeadGen - Premium Interactivity (V2)
+ * MVBRYT LeadGen - Premium Interactivity (V2.1 - REAL FORM SUBMISSION)
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,14 +8,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.getElementById('navbar');
     
     const handleScroll = () => {
+        if (!navbar) return;
         if (window.scrollY > 100) {
             navbar.classList.add('scrolled');
         } else {
-            // Only remove on home page if we want that transparency at top
             if (window.location.pathname.endsWith('index.html') || window.location.pathname.endsWith('/')) {
                 navbar.classList.remove('scrolled');
             } else {
-                navbar.classList.add('scrolled'); // Stay solid on other pages
+                navbar.classList.add('scrolled');
             }
         }
     };
@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                // Add a small delay for staggered effect if items are in a group
                 const delay = entry.target.parentElement.classList.contains('grid') || 
                               entry.target.parentElement.classList.contains('feature-list') 
                               ? (index % 3) * 150 : 0;
@@ -50,30 +49,53 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(item);
     });
 
-    // --- Contact Form Simulation ---
+    // --- Unified REAL Contact Form Handling (Web3Forms) ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
+            
             const btn = contactForm.querySelector('button');
             const originalText = btn.innerText;
+            const originalBg = btn.style.background;
             
+            // Visual Pending State
             btn.innerText = 'Deploying Protocol...';
             btn.disabled = true;
             btn.style.opacity = '0.7';
 
-            setTimeout(() => {
-                btn.innerText = 'Strategy Proposal Deployed!';
-                btn.style.background = 'var(--accent)';
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success State
+                    btn.innerText = 'Strategy Proposal Deployed!';
+                    btn.style.background = 'var(--accent)';
+                    btn.style.opacity = '1';
+                    contactForm.reset();
+                    
+                    setTimeout(() => {
+                        btn.innerText = originalText;
+                        btn.style.background = originalBg || 'linear-gradient(135deg, var(--primary), var(--primary-bright))';
+                        btn.disabled = false;
+                    }, 5000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Submission Error:', error);
+                alert('Connection Error. Please try again or email mvbrytceo@gmail.com directly.');
+                btn.innerText = originalText;
+                btn.disabled = false;
                 btn.style.opacity = '1';
-                contactForm.reset();
-                
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.background = 'linear-gradient(135deg, var(--primary), var(--primary-bright))';
-                    btn.disabled = false;
-                }, 4000);
-            }, 2000);
+            }
         });
     }
 
@@ -112,11 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const question = item.querySelector('.faq-question');
         question.addEventListener('click', () => {
             const isActive = item.classList.contains('active');
-            
-            // Close other items
             faqItems.forEach(i => i.classList.remove('active'));
-            
-            // Toggle current item
             if (!isActive) {
                 item.classList.add('active');
             }
