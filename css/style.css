@@ -11,6 +11,8 @@
     --primary-bright: #818cf8;
     --secondary: #06b6d4;
     --accent: #f97316;
+    --red-accent: #ef4444;
+    --red-glow: rgba(239, 68, 68, 0.2);
     --bg-dark: #030712;
     --bg-elevated: #0f172a;
     --bg-card: rgba(15, 23, 42, 0.7);
@@ -25,6 +27,38 @@
     
     /* Animation */
     --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes pulse-red {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.pulse-indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--red-accent);
+    border-radius: 50%;
+    margin-right: 12px;
+    vertical-align: middle;
+    animation: pulse-red 2s infinite;
+}
+
+.text-priority { color: var(--red-accent); font-weight: 700; }
+.badge-urgent {
+    background: var(--red-glow);
+    color: var(--red-accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    border: 1px solid var(--red-accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 /* Base Reset */
@@ -108,7 +142,27 @@ ul { list-style: none; }
     gap: 2rem;
 }
 
-/* Roadmap / Market Opportunity Styles */
+.split-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    align-items: center;
+}
+
+.split-layout h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.1;
+    margin: 1.5rem 0 2rem;
+}
+
+.split-layout p {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: var(--text-muted);
+}
+
+.about-hero {
+    padding-top: 180px !important;
+}
 .roadmap-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -203,7 +257,7 @@ ul { list-style: none; }
     background: var(--bg-card);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
-    padding: 2.5rem;
+    padding: 4rem;
     position: relative;
     overflow: hidden;
     display: flex;
@@ -311,6 +365,9 @@ ul { list-style: none; }
         grid-auto-rows: auto;
     }
     .span-2-cols, .span-2-rows { grid-column: auto; grid-row: auto; }
+    .bento-card { 
+       padding: 2.5rem;
+    }
 }
 
 /* Grid Layout Utilities */
@@ -455,7 +512,7 @@ nav.scrolled {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 120px;
+    padding: 140px 0 80px;
     position: relative;
     overflow: hidden;
 }
@@ -468,14 +525,15 @@ nav.scrolled {
 }
 
 .hero-copy h1 {
-    font-size: clamp(2.8rem, 7vw, 4.5rem);
+    font-size: clamp(2.6rem, 8vw, 4.5rem);
     margin: 1.5rem 0 2rem;
+    line-height: 1.1;
 }
 
 .hero-copy p {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(1rem, 2vw, 1.25rem);
     color: var(--text-muted);
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
     max-width: 620px;
 }
 
@@ -948,8 +1006,9 @@ footer {
     .hero-layout, .split-layout { grid-template-columns: 1fr; gap: 4rem; }
     .hero { text-align: center; }
     .hero-copy p { margin-inline: auto; }
-    .hero-actions { justify-content: center; }
+    .hero-actions, .cta-btns { justify-content: center; align-items: center; }
     .proof-strip { justify-content: center; }
+    .badge-urgent { align-self: center; }
 }
 
 @media (max-width: 768px) {

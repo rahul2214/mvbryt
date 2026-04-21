@@ -1,0 +1,21 @@
+{
+  "name": "MVBRYT SOLUTIONS LTD",
+  "short_name": "MVBRYT",
+  "description": "Connecting Businesses to Decision Makers Globally. Premium B2B Lead Generation and Appointment Setting.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#6366f1",
+  "icons": [
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

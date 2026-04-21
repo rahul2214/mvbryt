@@ -9,12 +9,49 @@
         content="Explore the MVBRYT Solution Matrix. High-intent B2B lead generation, appointment setting, and CRM-ready data for global markets.">
     <link rel="canonical" href="https://mvbryt.com/services.html">
     <!-- Open Graph -->
-    <meta property="og:title" content="Our Services | MVBRYT SOLUTIONS LTD">
-    <meta property="og:description"
-        content="From lead qualification to booked meetings—explore our B2B growth protocols.">
-    <meta property="og:image" content="https://mvbryt.com/assets/images/social-preview.png">
+    <meta property="og:title" content="Our Solution Matrix | MVBRYT SOLUTIONS LTD">
+    <meta property="og:description" content="Explore our B2B growth protocols: Lead Generation, Appointment Setting, and CRM-ready data.">
+    <meta property="og:url" content="https://mvbryt.com/services.html">
+    <meta property="og:image" content="https://mvbryt.com/assets/images/solutions.png">
+
+    <meta name="theme-color" content="#6366f1">
+    <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="assets/images/logo.png">
+
+    <!-- Structured Data: ServiceCatalog -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "B2B Lead Generation & Appointment Setting",
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "MVBRYT SOLUTIONS LTD"
+      },
+      "areaServed": "Global",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "B2B Growth Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "B2B Lead Generation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Appointment Setting"
+            }
+          }
+        ]
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -38,6 +75,8 @@
             <a href="contact.html" class="btn btn-primary">Book a Strategy Call</a>
         </div>
     </nav>
+
+    <main id="main-content">
 
     <header class="section" style="padding-top: 180px; background: linear-gradient(to bottom, #020617, #030712);">
         <div class="container">
@@ -121,7 +160,7 @@
                 </div>
 
                 <!-- Enterprise Plan -->
-                <div class="pricing-card reveal">
+                <div class="pricing-card reveal" style="border: 1px solid var(--red-accent); position: relative;">
                     <div class="pricing-top-row">
                         <div class="pricing-header">
                             <h3>Global Enterprise</h3>
@@ -161,7 +200,7 @@
                     engagement with local decision-makers.</p>
                 <div style="display: flex; gap: 2rem;">
                     <div>
-                        <strong style="font-size: 2.5rem;">10+</strong>
+                        <strong style="font-size: 2.5rem; color: var(--red-accent);">10+</strong>
                         <p style="color: var(--text-muted);">Qualified Meetings</p>
                     </div>
                     <div>
@@ -192,7 +231,6 @@
             </div>
 
             <div class="faq-container reveal">
-                <!-- FAQ 1 -->
                 <div class="faq-item">
                     <button class="faq-question">How do you ensure lead quality?</button>
                     <div class="faq-answer">
@@ -203,7 +241,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- FAQ 2 -->
                 <div class="faq-item">
                     <button class="faq-question">Do you support global market expansion?</button>
                     <div class="faq-answer">
@@ -213,7 +250,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- FAQ 3 -->
                 <div class="faq-item">
                     <button class="faq-question">Can you integrate with our existing CRM?</button>
                     <div class="faq-answer">
@@ -224,7 +260,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- FAQ 4 -->
                 <div class="faq-item">
                     <button class="faq-question">How soon can we expect the first meetings?</button>
                     <div class="faq-answer">
@@ -234,7 +269,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- FAQ 5 -->
                 <div class="faq-item">
                     <button class="faq-question">What makes MVBRYT different from a typical agency?</button>
                     <div class="faq-answer">
@@ -247,6 +281,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <footer>
         <div class="container">
